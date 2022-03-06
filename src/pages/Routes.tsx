@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
+import { AppLayout } from 'layouts';
 
 import type { FC } from 'react';
 
@@ -10,10 +11,12 @@ const Routes: FC = () => {
   return (
     <BrowserRouter>
       <Suspense fallback={<>Loading...</>}>
-        <ReactRoutes>
-          <Route path="/" element={<Main />} />
-          <Route path="*" element={<NotFound />} />
-        </ReactRoutes>
+        <AppLayout>
+          <ReactRoutes>
+            <Route path="/" element={<Main />} />
+            <Route path="*" element={<NotFound />} />
+          </ReactRoutes>
+        </AppLayout>
       </Suspense>
     </BrowserRouter>
   );
