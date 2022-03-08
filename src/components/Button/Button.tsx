@@ -15,12 +15,13 @@ const Button: FC<ButtonProps> = (props) => {
         height: 40px;
         width: 100%;
         text-align: center;
-        border-top: 1px solid #ccc;
-        background-color: #191f28;
-        color: #b0b8c1;
+        border: 1px solid #ffde4d;
+        border-radius: 5px;
+        background-color: #FBCA04;
+        color: #191f28;
         padding: 0 10px;
         &:hover {
-          background-color: #ccc;
+          background-color: #ffde4d;
         }
       `}
     >
