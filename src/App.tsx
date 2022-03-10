@@ -1,6 +1,9 @@
 import normalize from 'emotion-normalize';
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { css, Global } from '@emotion/react';
 import Routes from 'pages/Routes';
+ 
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
@@ -15,7 +18,9 @@ const App = () => {
           }
         `}
       />
-      <Routes />
+      <QueryClientProvider client={queryClient}>
+        <Routes />
+      </QueryClientProvider>
     </>
   );
 };

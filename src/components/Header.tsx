@@ -1,9 +1,17 @@
 import { memo } from 'react';
+import { useQuery } from 'react-query'
 import { css } from '@emotion/react';
 
 import type { FC } from 'react';
 
 const Header: FC = () => {
+  const { isLoading, error, data } = useQuery('repoData', () =>
+     fetch('https://api.github.com/repos/tannerlinsley/react-query').then(res =>
+       res.json()
+     ),
+   )
+ 
+  console.log(isLoading, error, data);
   return (
     <header
       css={css`
@@ -24,6 +32,9 @@ const Header: FC = () => {
       >
         Title 🐝
       </strong>
+      <span>
+        로그인
+      </span>
     </header>
   );
 };
