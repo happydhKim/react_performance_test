@@ -3,8 +3,9 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { css, Global } from '@emotion/react';
 import Routes from 'pages/Routes';
  
+const queryClient = new QueryClient();
+
 const App = () => {
-  const queryClient = new QueryClient();
   return (
     <>
       <Global
