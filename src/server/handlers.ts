@@ -1,11 +1,13 @@
 import { rest } from 'msw';
 
 export const handlers = () => {
-  return [rest.get('/api/user', getUserInformation)];
-  return [rest.get('/api/first', getFirstInfo)];
-  return [rest.get('/api/second', getSecondInfo)];
-  return [rest.get('/api/third', getThirdInfo)];
-  return [rest.get('/api/fourth', getFourthInfo)];
+  return [
+    rest.get('/api/user', getUserInformation),
+    rest.get('/api/first', getFirstInfo),
+    rest.get('/api/second', getSecondInfo),
+    rest.get('/api/third', getThirdInfo),
+    rest.get('/api/fourth', getFourthInfo),
+  ];
 };
 
 const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
