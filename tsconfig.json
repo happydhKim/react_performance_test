@@ -22,7 +22,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["src"],
+  "include": ["src", "public/mockServiceWorker.js"],
   "paths": {
     "pages/*": ["pages/*"],
     "components/*": ["components/*"],
