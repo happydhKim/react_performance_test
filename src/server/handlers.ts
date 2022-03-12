@@ -20,37 +20,41 @@ const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
   );
 };
 
-const getFirstInfo: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
+const getFirstInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.json({
+      depth: 1,
       description: '첫 번째 테스트....',
     })
   );
 };
 
-const getSecondInfo: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
+const getSecondInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.json({
+      depth: 2,
       description: '두 번째 테스트....',
     })
   );
 };
 
-const getThirdInfo: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
+const getThirdInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.json({
+      depth: 3,
       description: '세 번째 테스트....',
     })
   );
 };
 
-const getFourthInfo: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
+const getFourthInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   return res(
     ctx.status(200),
     ctx.json({
+      depth: 4,
       description: '네 번째 테스트....',
     })
   );
