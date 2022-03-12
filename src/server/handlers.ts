@@ -9,8 +9,9 @@ export const handlers = () => {
     rest.get('/api/fourth', getFourthInfo),
   ];
 };
-
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
+  sleep(1000);
   return res(
     ctx.status(200),
     ctx.json({
@@ -20,7 +21,8 @@ const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
   );
 };
 
-const getFirstInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+const getFirstInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  await sleep(1000);
   return res(
     ctx.status(200),
     ctx.json({
@@ -30,7 +32,8 @@ const getFirstInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-const getSecondInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+const getSecondInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  await sleep(1000);
   return res(
     ctx.status(200),
     ctx.json({
@@ -40,7 +43,8 @@ const getSecondInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-const getThirdInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+const getThirdInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  await sleep(1000);
   return res(
     ctx.status(200),
     ctx.json({
@@ -50,7 +54,8 @@ const getThirdInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
   );
 };
 
-const getFourthInfo: Parameters<typeof rest.get>[1] = (req, res, ctx) => {
+const getFourthInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
+  await sleep(1000);
   return res(
     ctx.status(200),
     ctx.json({
