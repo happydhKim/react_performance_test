@@ -1,31 +1,29 @@
 import { useQuery } from 'react-query';
-import { Button } from 'components/Button';
 
 import type { FC } from 'react';
 
 const Main: FC = () => {
-  const { data: first } = useQuery('first', () =>
+  const { isLoading: firstLoading, data: first, isError, error } = useQuery('first', () =>
     fetch('/api/first').then(res => res.json()),
+    {retry: 3},
   );
-  const { data: second } = useQuery('second', () =>
+  const { isLoading: secondLoading, data: second } = useQuery('second', () =>
     fetch(`/api/second?depth=${first.depth}`).then(res => res.json()),
-    { enabled: !!first },
+    { enabled: !!first, retry: 3 },
   );
-  const { data: third } = useQuery('third', () =>
+  const { isLoading: thirdLoading, data: third } = useQuery('third', () =>
     fetch(`/api/third?depth=${second.depth}`).then(res => res.json()),
-    { enabled: !!second },
+    { enabled: !!second, retry: 3 },
   );
-  const { data: fourth } = useQuery('fourth', () =>
+  const { isLoading: fourthLoading, data: fourth } = useQuery('fourth', () =>
     fetch(`/api/fourth?depth=${third.depth}`).then(res => res.json()),
-    { enabled: !!third },
+    { enabled: !!third, retry: 3 },
   );
-  console.log(first, second, third, fourth); 
+
+  console.log(first, second, third, fourth, isError, error); 
   return (
     <>
-      <Button>
-        Button
-      </Button>
-      Main pages
+      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : `${first.description}${second.description}${third.description}${fourth.description}`}
     </>
   );
 };

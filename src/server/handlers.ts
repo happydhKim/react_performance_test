@@ -10,6 +10,7 @@ export const handlers = () => {
   ];
 };
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
   sleep(1000);
   return res(
@@ -23,12 +24,14 @@ const getUserInformation: Parameters<typeof rest.get>[1] = (_, res, ctx) => {
 
 const getFirstInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
   await sleep(1000);
-  return res(
+  return Math.random() < 0.5 ? res(
     ctx.status(200),
     ctx.json({
       depth: 1,
       description: '첫 번째 테스트....',
     })
+  ) : res(
+    ctx.status(500),
   );
 };
 
