@@ -4,7 +4,13 @@ import { RecoilRoot } from 'recoil';
 import { css, Global } from '@emotion/react';
 import Routes from 'pages/Routes';
  
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
   return (
