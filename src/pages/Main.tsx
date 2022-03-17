@@ -1,26 +1,20 @@
-import { useQuery } from 'react-query';
+import useMain from 'hooks/useMain';
 
 import type { FC } from 'react';
 
 const Main: FC = () => {
-  const { isLoading: firstLoading, data: first, isError, error } = useQuery(['first'], () =>
-    fetch('/api/first').then(res => res.json()),
-    { retry: 5 },
-  );
-  const { isLoading: secondLoading, data: second } = useQuery(['second', first], () =>
-    fetch(`/api/second?depth=${first.depth}`).then(res => res.json()),
-    { enabled: !!first, retry: 3 },
-  );
-  const { isLoading: thirdLoading, data: third } = useQuery(['third', second], () =>
-    fetch(`/api/third?depth=${second.depth}`).then(res => res.json()),
-    { enabled: !!second, retry: 3 },
-  );
-  const { isLoading: fourthLoading, data: fourth } = useQuery(['fourth', third], () =>
-    fetch(`/api/fourth?depth=${third.depth}`).then(res => res.json()),
-    { enabled: !!third, retry: 3 },
-  );
+  const { 
+    firstLoading,
+    secondLoading,
+    thirdLoading,
+    fourthLoading,
+    first,
+    second,
+    third,
+    fourth,
+  } = useMain();
 
-  console.log(first, second, third, fourth, isError, error); 
+  console.log(first, second, third, fourth); 
   return (
     <>
       {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : `${first.description}${second.description}${third.description}${fourth.description}`}
