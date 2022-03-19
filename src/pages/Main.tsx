@@ -17,7 +17,7 @@ const Main: FC = () => {
   console.log(first, second, third, fourth); 
   return (
     <>
-      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : `${first.description}${second.description}${third.description}${fourth.description}`}
+      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : `${first?.description}${second?.description}${third?.description}${fourth?.description}`}
     </>
   );
 };
