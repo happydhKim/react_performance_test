@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
 import { getFirst, getSecond, getThird, getFourth } from 'services/mainService';
-
   
 const useMain = () => {
   const { isLoading: firstLoading, data: first, isError, error } = useQuery(
@@ -10,17 +9,17 @@ const useMain = () => {
   );
   const { isLoading: secondLoading, data: second } = useQuery(
     ['second', first],
-    async () => getSecond(first.depth),
+    async () => first ? getSecond(first.depth) : null,
     { enabled: !!first, retry: 3 },
   );
   const { isLoading: thirdLoading, data: third } = useQuery(
     ['third', second],
-    async () => getThird(second.depth),
+    async () => second ? getThird(second.depth) : null,
     { enabled: !!second, retry: 3 },
   );
   const { isLoading: fourthLoading, data: fourth } = useQuery(
     ['fourth', third],
-    async () => getFourth(third.depth),
+    async () => third ? getFourth(third.depth) : null,
     { enabled: !!third, retry: 3 },
   );
 
