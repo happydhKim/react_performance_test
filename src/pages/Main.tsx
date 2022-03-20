@@ -14,10 +14,13 @@ const Main: FC = () => {
     fourth,
   } = useMain();
 
-  console.log(first, second, third, fourth); 
   return (
     <>
-      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : `${first?.description}${second?.description}${third?.description}${fourth?.description}`}
+      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : '데이터 로딩 완료'}
+      {first && <div>{first.description}</div>}
+      {second && <div>{second.description}</div>}
+      {third && <div>{third.description}</div>}
+      {fourth && <div>{fourth.description}</div>}
     </>
   );
 };

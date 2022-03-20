@@ -37,33 +37,39 @@ const getFirstInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
 
 const getSecondInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
   await sleep(1000);
-  return res(
+  return Math.random() < 0.5 ? res(
     ctx.status(200),
     ctx.json({
-      depth: 2,
+      depth: 1,
       description: '두 번째 테스트....',
     })
+  ) : res(
+    ctx.status(500),
   );
 };
 
 const getThirdInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
   await sleep(1000);
-  return res(
+  return Math.random() < 0.5 ? res(
     ctx.status(200),
     ctx.json({
-      depth: 3,
+      depth: 1,
       description: '세 번째 테스트....',
     })
+  ) : res(
+    ctx.status(500),
   );
 };
 
 const getFourthInfo: Parameters<typeof rest.get>[1] = async (req, res, ctx) => {
   await sleep(1000);
-  return res(
+  return Math.random() < 0.5 ? res(
     ctx.status(200),
     ctx.json({
-      depth: 4,
+      depth: 1,
       description: '네 번째 테스트....',
     })
+  ) : res(
+    ctx.status(500),
   );
 };
