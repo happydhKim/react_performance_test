@@ -1,28 +1,25 @@
-import useMain from 'hooks/useMain';
+import styled from '@emotion/styled';
 
 import type { FC } from 'react';
 
 const Main: FC = () => {
-  const { 
-    firstLoading,
-    secondLoading,
-    thirdLoading,
-    fourthLoading,
-    first,
-    second,
-    third,
-    fourth,
-  } = useMain();
-
+  const list = new Array(10000).fill(0).map((item, i) => i);
+  console.log(list);
   return (
     <>
-      {firstLoading || secondLoading || thirdLoading || fourthLoading ? 'loading...' : '데이터 로딩 완료'}
-      {first && <div>{first.description}</div>}
-      {second && <div>{second.description}</div>}
-      {third && <div>{third.description}</div>}
-      {fourth && <div>{fourth.description}</div>}
+      {list.map((i) => (
+        <div key={i}>
+          <Typography>안녕하세요??</Typography>
+        </div>
+      ))}
     </>
   );
 };
 
 export default Main;
+
+const Typography = styled.div`
+  font-weight: 500;
+  font-size: 30px;
+  white-space: nowrap;
+`;
